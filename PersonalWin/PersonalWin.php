@@ -79,50 +79,37 @@ $Reader=mysqli_fetch_array($result);
 				</div>
 				<div class="container">
 					<div class="no-doc">
-                    <?php
-                    $result=mysqli_query($connID,"select * from Lend where RdId=$Reader[0];");
-					$Lend=mysqli_fetch_array($result);
+                    <?php 
+					if (isset($_POST["submit"]) && $_POST["submit"]=="提交"){
+	$username=$_POST["username"];
+	$password1=$_POST["password1"];
+	if($_POST["sex"]==1) $sex='男';else $sex='女';
+	$result=mysqli_query($connID,"update Reader set RdName='$username',RdSex='$sex',RdPW='$password1' where RdId=$RdId;");
+	?><script>location.href='PersonalWin.php';</script><?php
+	}
 					
-					if(!$Lend){ ?>
-						<img src="statics/images/no_doc.jpg"/>
-						<p>你还没有借过书哦~</p>
-                        <?php }
-						else {
-						?><table border="1">
-						<tr>
-                        <th width="5%">ID</th>
-                        <th width="5%">姓名</th>
-                        <th width="5%">书名</th>
-                        <th width="5%">借阅日期</th>
-                        <th width="5%">是否归还</th>
-                        </tr>
-                        <?php
-						$result=mysqli_query($connID,"select * from Lend where RdId=$Reader[0];");
-                        while($Lend=mysqli_fetch_array($result)){?>
-						<tr> 
-						<td align="center"><span><?php echo $Lend[0]; ?></span></td> 
-                        <td align="center"><span><?php echo $Reader[1]; ?></span></td>
-                        <td align="center"><span><?php 
-						$result0=mysqli_query($connID,"select * from Book where BkId=$Lend[1];");
-						$Book=mysqli_fetch_array($result0);
-						echo $Book[1];
-						 ?></span></td> 
-						<td align="center"><span><?php echo $Lend[2]; ?></span></td> 
-                        <td align="center"><span><?php if($Lend[5]=='Yes')echo "是";else echo "否"; ?></span></td> 
-						</tr>
-						
-						
-						<?php
-						
-						}
-?>
-						
-						</table>
-						<?php
-						
-						
-						}?>
-                        
+					
+					?>
+                    <form action="PersonalWin.php" method="post">
+	<br>
+	ID：<?php echo $Reader[0];?><br><br>
+    姓名：<input type="text" name="username" value="<?php echo $Reader[1];?>" size="10"/><br><br>
+    性别：<input name="sex" type="radio" value="<?php 
+	if($Reader[2]=='男')echo "1";else echo "0";
+	?>" checked="checked" />男
+    <input name="sex" type="radio" value="<?php 
+	if($Reader[2]=='男')echo "0";else echo "1";
+	?>" />女<br /><br>
+    密码：<input type="password" name="password1" value="<?php echo $Reader[3];?>" size="10" maxlength="20"/><br><br>
+	<input type="submit" value="提交" name="submit"/>
+    <input type="reset" value="重置" name="reset" />
+</form>
+
+                    
+                    
+                    
+                    
+                    
 					</div>
 				</div>
 			</div>
