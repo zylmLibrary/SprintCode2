@@ -4,7 +4,6 @@
 	<meta charset="UTF-8">
 	<title>登录注册</title>
 	<link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 	<!--背景-->
@@ -21,19 +20,20 @@
 	<!--登录注册表-->
 	<div class="wel" id="from">
 		<div class="box-2 le-1">
-			<form action="login.php" method="post">
+			<form action="Login.php" method="post">
 				<div class="flrg">
 					<h3>登录</h3>
 					<div class="a">
 						<!--<label>账号：</label>-->
-						<input type="text" name=uname class="in-1" placeholder="请输入账号">
+						<input type="text" name="uname" class="in-1" placeholder="请输入账号">
 					</div>
 					<div class="a">
 						<!--<label>密码：</label>-->
 						<input type="password" name="pwd" class="in-1" placeholder="请输入密码">
 					</div>
+					<input type="hidden" value="">
 					<div class="a">
-						<button type="submit" >登录</button>
+						<button type="submit" name="submit">登录</button>
 					</div>
 					<div class="a">
 						<div class="hr"></div>
@@ -42,7 +42,7 @@
 						<a href="#">忘记密码</a>
 					</div>
 					<div class="a">
-						<a href="#">游客登录</a>
+						<a href="../MainWin/visitor.php">游客登录</a>
 					</div>
 				</div>
 			</form>
@@ -54,9 +54,6 @@
 					<h3>注册</h3>
 					<div class="a">
 						<input type="text" class="in-1" placeholder="您的用户名">
-					</div>
-					<div class="a">
-						<input type="text" class="in-1" placeholder="输入手机号码">
 					</div>
 					<div class="a">
 						<input type="password" class="in-1" placeholder="输入密码">
