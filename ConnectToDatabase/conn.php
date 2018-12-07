@@ -1,7 +1,7 @@
 <?php
 	header("Content-Type: text/html; charset=utf-8");
 	require_once "config.php";
-	$conn = mysqli_connect($host,$username,$pw) or die("连接数据库服务器失败！".mysqli_error());
+	$conn = mysqli_connect($host,$userName,$pw) or die("连接数据库服务器失败！".mysqli_error());
 	mysqli_query($conn, "set names utf8");
 
 	// 选择数据库、建库
