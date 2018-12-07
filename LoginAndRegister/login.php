@@ -1,5 +1,13 @@
-<?php
-	include_once("../ConnectToDatabase/conn.php");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<?php
+		// header("Content-Type: text/html; charset=utf-8");
+		include_once("../ConnectToDatabase/conn.php");
 		$uname = $_POST["uname"];
 		$pwd = $_POST["pwd"];
 
@@ -15,15 +23,18 @@
 			if ($pwd == $myrow[0]) {
 				echo "<script>alert('登录成功')</script>";
 				if (substr($uname, 0, 2) == '99') {
-					echo "<script>alert('到管理员主界面')</script>";
+					echo "<script>location.href='../MainWin/mainAdmins.php?id=$uname';</script>";
 				} else {
-					echo "<script>alert('到用户主界面')</script>";
+					echo "<script>location.href='../MainWin/main.php?id=$uname';</script>";
 				}
 			} else {
 				echo "<script>alert('密码错误！')</script>";
+				echo "<script>location.href='LoginAndRegister.php';</script>";
 			}
 		} else {
 			echo "<script>alert('用户名不存在！')</script>";
+			echo "<script>location.href='LoginAndRegister.php';</script>";
 		}
-
-?>
+	?>
+</body>
+</html>
