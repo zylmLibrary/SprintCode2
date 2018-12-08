@@ -49,21 +49,21 @@
 		</div>
 
 		<div class="box-2 le-2">
-			<form action="" method="post">
+			<form action="regist.php" method="post">
 				<div class="flrg-1">
 					<h3>注册</h3>
 					<div class="a">
-						<input type="text" class="in-1" placeholder="您的用户名">
+						<input type="text" name="uname" class="in-1" placeholder="您的账号">
 					</div>
 					<div class="a">
-						<input type="password" class="in-1" placeholder="输入密码">
+						<input type="password" name="pwd" class="in-1" placeholder="输入密码">
 					</div>
 					<div class="a">
-						<input type="password" class="in-1" placeholder="再次确认密码">
+						<input type="password" name="pwd2" class="in-1" placeholder="再次确认密码">
 					</div>
 					
 					<div class="a">
-						<button type="button">注册</button>
+						<button type="submit">注册</button>
 					</div>
 				</div>
 			</form>
