@@ -19,7 +19,12 @@ a{text-decoration: none;}
 .header .user-info .user-modify{float: right;margin-top: 30px;width: 110px;height: 40px;text-align: center;line-height: 40px;color: #fff;background: #62ab00;border-radius: 5px;}
 .main .left{float: left;width: 200px;height: auto;overflow: hidden;margin-right: 20px;background: #fff;}
 .main .left ul li{width: 100%;height: 50px;line-height: 50px;color: #666666;}
-.main .left ul li a{display: block;width: 100%;height: 100%;padding-left: 20px;}
+.main .left ul li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding-left: 20px;
+}
 .main .left ul li a i{font-size: 20px;padding-right: 5px;}
 .main .left ul li a.active{border-left: 3px solid #62ab00;background: #f3f7ed;color: #62ab00;}
 .main .left ul li a:hover{border-left: 3px solid #62ab00;background: #f3f7ed;color: #62ab00;}
@@ -27,5 +32,70 @@ a{text-decoration: none;}
 .main .right .tap{width: 100%;height: 40px;border-bottom: 2px solid #62ab00;background: #f9fafa;}
 .main .right .tap span{display: block;width: 128px;height: 100%;line-height: 40px;color: #fff;text-align: center;background: #62ab00;}
 .main .right .container{width: 100%;height: auto;overflow: hidden;background: #fff;}
-.main .right .container .no-doc{width: 100%;height: 350px;text-align: center;color: #999;font-size: 13px;}
+.main .right .container .no-doc{
+	display: none;
+	margin: 30px;
+	width: 1850;
+	height: 350px;
+	text-align: center;
+	color: #999;
+	font-size: 13px;
+	/*	border:1px solid blue;*/
+}
+.main .right .container .show{
+	display:block;
+	/*	border:1px solid blue;*/
+}
 .main .right .container .no-doc img{padding-top: 80px;}
+.main .right .container .show1{
+	display: none;
+	margin: 30px;
+	width: 90%;
+	height: 350;
+	text-align: center;
+	color: #999;
+	font-size: 16px;
+	/*border:1px solid blue;*/
+}
+
+.main .right .container .show2{
+	display: none;
+}
+
+.main .right .container .show3{
+	display: none;
+	/*border:1px solid blue;*/
+	margin: 70px 10px;
+}
+
+.boxs{ 
+	margin: 0;
+	padding: 0;
+}
+
+.boxs table{
+	width:100%;
+	margin-top:10px;
+	border-collapse:collapse;
+	font-size:12px;
+	border:1px solid #B5D6E6;
+	min-width:800px;
+}
+.boxs table th,.boxs table td{
+	height:20px;
+	border:1px solid #B5D6E6;
+}
+.boxs table th{
+	background-color:#E8F6FC;
+	font-weight:normal;
+}
+.boxs table td{
+	text-align:center;
+}
+.boxs a{
+	color:#444;
+	text-decoration:none;
+}
+.boxs a:hover{
+	text-decoration:underline;
+}
