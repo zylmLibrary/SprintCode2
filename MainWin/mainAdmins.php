@@ -82,8 +82,17 @@
 					<option value="环境科学、劳动保护科学（安全科学）">环境科学、劳动保护科学（安全科学）</option>
 					<option value="综合性图书">综合性图书</option>
 				</select>&nbsp; &nbsp;
-				<?php $id = $_GET['id']; ?>
-				<input type="hidden" name="id" <?php echo "value=$id"?>>
+				<?php 
+					if(!empty($_GET['id']))
+					{
+						$id = $_GET['id']; 
+						?>
+						<input type="hidden" name="id" <?php echo "value=$id"?>>
+						<?php
+					}	
+
+				?>
+				
 			<input type="submit" value="查询"/>
 		</div>
 		<table border="1">
@@ -113,7 +122,7 @@
 					<td><span><?php echo $myrow['BkPress']; ?></span></td>
 					<td><div align="center"><span>
 						<img src="images/edt.gif" width="16" height="16" />
-						<a href="editor.php?e_id=<?php echo $myrow['Id']; ?>">借阅</a>
+						<a href="./borrow.php?RdId=<?php $RdId="211600000"; echo $RdId; ?>&amp;BkId=<?php echo $myrow['BkId']; ?>&amp;AdId=<?php $AdId="211602345"; echo $AdId; ?>&amp;Flag=<?php echo "No"; ?>">借阅</a>
 					</span></div></td>
 				</tr>
 	<?php
