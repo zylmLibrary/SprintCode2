@@ -1,6 +1,6 @@
 <?php
 	$host = "127.0.0.1";
-	$userName = "root";
-	$pw = "root";
+	$username = "root";
+	$pw = "211605240";
 	$dbName = "library";
 ?>
