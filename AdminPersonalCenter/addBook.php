@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="gbk">
 	<title>Document</title>
 </head>
 <body>
 	<?php
 	include_once("../ConnectToDatabase/conn.php");
-	if (isset($_POST["submit"]) && $_POST["submit"]=='Âõæ‰π¶ÂÖ•Â∫ì'){
+	if (isset($_POST["submit"]) && $_POST["submit"]=='Õº È»Îø‚'){
 		if(!$_POST['BkId'])
-			echo "‰π¶Âè∑‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo " È∫≈≤ªƒ‹Œ™ø’£°";
 		else if(!$_POST['BkName'])
-			echo "‰π¶Âêç‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo " È√˚≤ªƒ‹Œ™ø’£°";
 		else if(!$_POST['BkAuthor'])
-			echo "‰ΩúËÄÖ‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo "◊˜’ﬂ≤ªƒ‹Œ™ø’£°";
 		else if(!$_POST['BkPrice'])
-			echo "‰π¶ÁöÑÂçï‰ª∑‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo " Èµƒµ•º€≤ªƒ‹Œ™ø’£°";
 		else if(!$_POST['BkClassify'])
-			echo "‰π¶ÁöÑÂàÜÁ±ª‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo " Èµƒ∑÷¿‡≤ªƒ‹Œ™ø’£°";
 		else if(!$_POST['BkLocation'])
-			echo "‰π¶ÁöÑ‰ΩçÁΩÆ‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo " ÈµƒŒª÷√≤ªƒ‹Œ™ø’£°";
 		else if(!$_POST['BkRessidue'])
-			echo "‰π¶ÁöÑÂâ©‰ΩôÈáè‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo " Èµƒ ˝¡ø≤ªƒ‹Œ™ø’£°";
 		else if(!$_POST['Press'])
-			echo "‰π¶ÁöÑÂá∫ÁâàÁ§æ‰∏çËÉΩ‰∏∫Á©∫ÔºÅ";
+			echo " Èµƒ≥ˆ∞Ê…Á≤ªƒ‹Œ™ø’£°";
 		else {
 			$bkId = $_POST['BkId'];
 			$bkName = $_POST['BkName'];
@@ -34,14 +34,24 @@
 			$bkRessidue = $_POST['BkRessidue'];
 			$press = $_POST['Press'];
 			$id = $_POST['id'];
-
-			$sql = "INSERT INTO Book VALUES('".$bkId."','".$bkName."','".$bkAuthor."','".$bkPrice."','".$bkClassify."','".$bkLocation."','".$bkRessidue."','".$press."')";
+			for ($x=1; $x<=$bkRessidue; $x++) {
+            $sql = "INSERT INTO Book(id,BkName,BkAuthor,BkPrice,BkClassify,BkLocation,BkPress)VALUES('$bkId','$bkName','$bkAuthor','$bkPrice','$bkClassify','$bkLocation','$press')";
 			mysqli_query($conn, $sql);
-
-			echo "<script>alert('Âõæ‰π¶ÂÖ•Â∫ìÊàêÂäü')</script>";
+			}
+			
+			$result = mysqli_query($conn,"select * from BookCollection where id=$bkId ");
+			$add=mysqli_fetch_array($result);
+			if(!$add){
+				
+			$sql = "INSERT INTO BookCollection VALUES('$bkId','$bkName','$bkAuthor','$bkPrice','$bkClassify','$press')";
+			mysqli_query($conn, $sql);
+				}
+			
+			echo "<script>alert('Õº È»Îø‚≥…π¶')</script>";
 			echo "<script>location.href='../MainWin/mainAdmins.php?id="."$id';</script>";
 		}
-	}
+	}else 
+	echo "<script>alert('Õº È»Îø‚ ß∞‹')</script>";
 	?>
 </body>
 </html>

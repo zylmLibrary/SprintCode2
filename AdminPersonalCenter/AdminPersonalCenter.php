@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>ç®¡ç†å‘˜ä¸ªäººä¸­å¿ƒ</title>
+	<meta charset="gbk">
+	<title>¹ÜÀíÔ±¸öÈËÖĞĞÄ</title>
 	<link rel="stylesheet" type="text/css" href="statics/css/iconfont.css" />
 	<link rel="stylesheet" type="text/css" href="statics/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="statics/css/table.css" />
@@ -11,45 +11,59 @@
 			return document.getElementById(id);
 		}
 		function change(){
-			$('message').innerHTML='ç³»ç»Ÿæ¶ˆæ¯';
+			$('message').innerHTML='ÏµÍ³ÏûÏ¢';
 			$('box1').style.display="block";
 			$('box2').style.display="none";
 			$('box3').style.display="none";
 			$('box4').style.display="none";
 			$('box5').style.display="none";
+			$('box6').style.display="none";
 		}
 		function change1(){
-			$('message').innerHTML='æ–°ä¹¦å…¥åº“';
+			$('message').innerHTML='ĞÂÊéÈë¿â';
 			$('box1').style.display="none";
 			$('box2').style.display="block";
 			$('box3').style.display="none";
 			$('box4').style.display="none";
 			$('box5').style.display="none";
+			$('box6').style.display="none";
 			
 		}
 		function change2(){
-			$('message').innerHTML='å›¾ä¹¦å€Ÿå‡ºè¡¨';
+			$('message').innerHTML='Í¼Êé½è³ö±í';
 			$('box1').style.display="none";
 			$('box2').style.display="none";
 			$('box3').style.display="none";
 			$('box4').style.display="none";
 			$('box5').style.display="block";
+			$('box6').style.display="none";
 		}
 		function change3(){
-			$('message').innerHTML='ä¸ªäººèµ„æ–™';
+			$('message').innerHTML='¸öÈË×ÊÁÏ';
 			$('box1').style.display="none";
 			$('box2').style.display="none";
 			$('box3').style.display="block";
 			$('box4').style.display="none";
 			$('box5').style.display="none";
+			$('box6').style.display="none";
 		}
 		function change4(){
-			$('message').innerHTML='ä¿®æ”¹èµ„æ–™';
+			$('message').innerHTML='ĞŞ¸Ä×ÊÁÏ';
 			$('box1').style.display="none";
 			$('box2').style.display="none";
 			$('box3').style.display="none";
 			$('box4').style.display="block";
 			$('box5').style.display="none";
+			$('box6').style.display="none";
+		}
+				function change5(){
+			$('message').innerHTML='Í¼Êé¹é»¹';
+			$('box1').style.display="none";
+			$('box2').style.display="none";
+			$('box3').style.display="none";
+			$('box4').style.display="none";
+			$('box5').style.display="none";
+			$('box6').style.display="block";
 		}
 	</script>
 </head>
@@ -57,8 +71,8 @@
 	<div class="header">
 		<div class="bar">
 			<div class="w1200">
-				<span class="l">ç®¡ç†å‘˜<font>ä¸ªäººä¸­å¿ƒ</font></span>
-				<span class="r"><a href="../LoginAndRegister/LoginAndRegister.php"><i class="icon iconfont icon-dianyuan"></i>é€€å‡º</a></span>
+				<span class="l">¹ÜÀíÔ±<font>¸öÈËÖĞĞÄ</font></span>
+				<span class="r"><a href="../MainWin/mainAdmins.php?id=<?php echo $_GET['id'];?>">·µ»Ø</a>&nbsp;&nbsp;&nbsp;<a href="../LoginAndRegister/LoginAndRegister.php">ÍË³ö</a></span>
 			</div>
 		</div>
 		<div class="user-info">
@@ -74,14 +88,14 @@
 					?>
 				<div class="user-account">
 				
-					<p class="tip">ä¸‹åˆå¥½ï¼Œ<?php echo $id['AdName']; ?></p>
+					<p class="tip">ÏÂÎçºÃ£¬<?php echo $id['AdName']; ?></p>
 					<p class="account">
-						<span>å¸æˆ·åï¼š<?php echo $id['AdName']; ?></span>
-						<span>èŒå·¥å·ï¼š<?php echo $id['AdId']; ?></span>
+						<span>ÕÊ»§Ãû£º<?php echo $id['AdName']; ?></span>
+						<span>Ö°¹¤ºÅ£º<?php echo $id['AdId']; ?></span>
 					</p>
 				</div>
 				<div class="user-modify">
-					<a href="#" onclick="change4()">ä¿®æ”¹èµ„æ–™></a>
+					<a href="#" onclick="change4()">ĞŞ¸Ä×ÊÁÏ></a>
 				</div>
 			</div>
 		</div>
@@ -92,53 +106,59 @@
 				<li>
 					<a href="#" id="xx" onclick="change()">
 						<i class="icon iconfont icon-lingdang"></i>
-						æ¶ˆæ¯
+						ÏûÏ¢
 					</a>
 				</li>
 				<li>
 					<a href="#"  onclick="change1()" id="button2">
 						<i class="icon iconfont icon-fangzidichan"></i>
-						å›¾ä¹¦å…¥åº“
+						Í¼ÊéÈë¿â
 					</a>
 				</li>
 				<li>
 					<a href="#" onclick="change2()">
 						<i class="icon iconfont icon-pinglun"></i>
-						å›¾ä¹¦å€Ÿå‡ºè¡¨
+						Í¼Êé½è³ö±í
 					</a>
 				</li>
 				<li>
 					<a href="#" onclick="change3()">
 						<i class="icon iconfont icon-geren"></i>
-						ä¸ªäººèµ„æ–™
+						¸öÈË×ÊÁÏ
+					</a>
+				</li>
+                <li>
+					<a href="#" onclick="change5()">
+						<i class="icon iconfont icon-pinglun"></i>
+						Í¼Êé¹é»¹
 					</a>
 				</li>
 			</ul>
 		</div>
 		<div class="right">
 			<div class="tap">
-				<span id="message">ç³»ç»Ÿæ¶ˆæ¯</span>
+				<span id="message">ÏµÍ³ÏûÏ¢</span>
 			</div>
 			<div class="container">
 				<div class="no-doc show" id="box1">
 					<img src="statics/images/no_doc.jpg"/>
-					<p>æ‚¨è¿˜æ²¡æœ‰æ¶ˆæ¯å“¦~</p>
+					<p>Äú»¹Ã»ÓĞÏûÏ¢Å¶~</p>
 				</div>
 				<div class="no-doc" id="box2">
 					<form method="post" action="addBook.php">
 					<table class="profile-table">
-						<tr><th>ä¹¦å·ï¼š</th><td><input type="text" name="BkId" value="" /></td></tr>
-						<tr><th>ä¹¦åï¼š</th><td><input type="text" name="BkName" value=""/></td></tr>
-						<tr><th>ä½œè€…ï¼š</th><td><input type="text" name="BkAuthor" value=""></td></tr>
-						<tr><th>å•ä»·ï¼š</th><td><input type="text" name="BkPrice"  value=""></td></tr>
-						<tr><th>ç±»åˆ«ï¼š</th><td><input type="text" name="BkClassify"  value=""></td></tr>
-						<tr><th>ä½ç½®ï¼š</th><td><input type="text" name="BkLocation"  value=""></td></tr>
-						<tr><th>å‰©ä½™é‡ï¼š</th><td><input type="text" name="BkRessidue"  value=""></td></tr>
-						<tr><th>å‡ºç‰ˆç¤¾ï¼š</th><td><input type="text" name="Press"  value=""></td></tr>
+						<tr><th>ÊéºÅ£º</th><td><input type="text" name="BkId" value="" /></td></tr>
+						<tr><th>ÊéÃû£º</th><td><input type="text" name="BkName" value=""/></td></tr>
+						<tr><th>×÷Õß£º</th><td><input type="text" name="BkAuthor" value=""></td></tr>
+						<tr><th>µ¥¼Û£º</th><td><input type="text" name="BkPrice"  value=""></td></tr>
+						<tr><th>Àà±ğ£º</th><td><input type="text" name="BkClassify"  value=""></td></tr>
+						<tr><th>Î»ÖÃ£º</th><td><input type="text" name="BkLocation"  value=""></td></tr>
+						<tr><th>Èë¿âÊıÁ¿£º</th><td><input type="text" name="BkRessidue"  value=""></td></tr>
+						<tr><th>³ö°æÉç£º</th><td><input type="text" name="Press"  value=""></td></tr>
 						<tr><td colspan="2" class="td-btn">
 						<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-						<input type="submit" name="submit" value="å›¾ä¹¦å…¥åº“" class="button" />
-						<input type="reset" value="é‡æ–°å¡«å†™" class="button" />
+						<input type="submit" name="submit" value="Í¼ÊéÈë¿â" class="button" />
+						<input type="reset" value="ÖØĞÂÌîĞ´" class="button" />
 						</td></tr>
 					</table>
 					</form>
@@ -147,9 +167,9 @@
 				<div class="no-doc show1" id="box3">
 					<form method="post" action="addBook.php">
 					<table class="profile-table">
-						<tr><th>ç®¡ç†å‘˜IDï¼š</th><td><?php echo $id['AdId']; ?></td></tr>
-						<tr><th>å§“åï¼š</th><td><?php echo $id['AdName']; ?></td></tr>
-						<tr><th>æ€§åˆ«ï¼š</th><td><?php echo $id['AdSex']."æ€§"; ?></td></tr>
+						<tr><th>¹ÜÀíÔ±ID£º</th><td><?php echo $id['AdId']; ?></td></tr>
+						<tr><th>ĞÕÃû£º</th><td><?php echo $id['AdName']; ?></td></tr>
+						<tr><th>ĞÔ±ğ£º</th><td><?php echo $id['AdSex']."ĞÔ"; ?></td></tr>
 						</td></tr>
 					</table>
 					</form>
@@ -158,14 +178,14 @@
 				<div class="no-doc show2" id="box4">
 					<form method="post" action="./updateAdmin.php">
 						<table class="profile-table">
-							<tr><th>ç®¡ç†å‘˜IDï¼š</th><td><?php echo $id['AdId']; ?></td></tr>
-							<tr><th>å§“åï¼š</th><td><input type="text" name="AdName" value="<?php echo $id['AdName']; ?>"/></td></tr>
-							<tr><th>æ€§åˆ«ï¼š</th><td><input type="text" name="AdSex" value="<?php echo $id['AdSex']; ?>"/></td></tr>
-							<tr><th>å¯†ç ä¿®æ”¹ï¼š</th><td><input type="password" name="AdPW" value="<?php echo $id['AdPW']; ?>"/></td></tr>
+							<tr><th>¹ÜÀíÔ±ID£º</th><td><?php echo $id['AdId']; ?></td></tr>
+							<tr><th>ĞÕÃû£º</th><td><input type="text" name="AdName" value="<?php echo $id['AdName']; ?>"/></td></tr>
+							<tr><th>ĞÔ±ğ£º</th><td><input type="text" name="AdSex" value="<?php echo $id['AdSex']; ?>"/></td></tr>
+							<tr><th>ÃÜÂëĞŞ¸Ä£º</th><td><input type="password" name="AdPW" value="<?php echo $id['AdPW']; ?>"/></td></tr>
 							<tr><td colspan="3" class="td-btn">
 								<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
-								<input type="submit" name="submit" value="ä¿å­˜èµ„æ–™" class="button" />
-								<input type="reset" value="é‡æ–°å¡«å†™" class="button" />
+								<input type="submit" name="submit" value="±£´æ×ÊÁÏ" class="button" />
+								<input type="reset" value="ÖØĞÂÌîĞ´" class="button" />
 							</td></tr>
 						</table>
 					</form>
@@ -176,12 +196,12 @@
 					<div class="boxs">	
 					<table>
 					<tr>
-						<th>è¯»è€…ID</th>
-						<th>å›¾ä¹¦ID</th>
-						<th>å€Ÿå‡ºæ—¶é—´</th>
-		                <th>å½’è¿˜æ—¶é—´</th>
-						<th>ç®¡ç†å‘˜ID</th>
-						<th>æ˜¯å¦å½’è¿˜</th>
+						<th>¶ÁÕßID</th>
+						<th>Í¼ÊéID</th>
+						<th>½è³öÊ±¼ä</th>
+		                <th>¹é»¹Ê±¼ä</th>
+						<th>¹ÜÀíÔ±ID</th>
+						<th>ÊÇ·ñ¹é»¹</th>
 					</tr>
 					<?php
 						$result = mysqli_query($conn, "SELECT * From Lend");
@@ -190,7 +210,7 @@
 					?>
 					<tr>
 						<td><span><?php echo $myrow['RdId']; ?></span></td>
-						<td><span><?php echo $myrow['BkId']; ?></span></td>
+						<td><span><?php echo $myrow['id']; ?></span></td>
 						<td><span><?php echo $myrow['BT']; ?></span></td>
 						<td><span><?php echo $myrow['RT']; ?></span></td>
 						<td><span><?php echo $myrow['AdId']; ?></span></td>
@@ -202,8 +222,25 @@
 						?>
 					</table>
 					</div>
+
 				</div>
 
+
+                    <div class="no-doc show6" id="box6">
+					<form method="post" action="returnBook.php">
+						<table class="profile-table">
+							<tr><th>¶ÁÕßID£º</th><td><input type="text" name="RdId" value=""/></td></tr>
+							<tr><th>Í¼ÊéÊéºÅ£º</th><td><input type="text" name="BkId" value=""/></td></tr>
+                            <tr><th>Í¼ÊéÎ¨Ò»ÊéºÅ£º</th><td><input type="text" name="bkid" value=""/></td></tr>
+                            <tr><th>Í¼ÊéÎ»ÖÃ£º</th><td><input type="text" name="location" value=""/></td></tr>
+							<tr><td colspan="3" class="td-btn">
+								<input type="hidden" name="id" value="<?php echo $_GET['id']; ?>">
+								<input type="submit" name="submit" value="Í¼Êé¹é»¹" class="button" />
+								<input type="reset" value="ÖØĞÂÌîĞ´" class="button" />
+							</td></tr>
+						</table>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
