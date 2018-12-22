@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="gbk">
 	<title></title>
 </head>
 <body>
@@ -21,18 +21,18 @@
 		if ( @mysqli_num_rows($result) > 0 ) {
 			$myrow = mysqli_fetch_row($result);
 			if ($pwd == $myrow[0]) {
-				echo "<script>alert('ç™»å½•æˆåŠŸ')</script>";
+				echo "<script>alert('µÇÂ¼³É¹¦')</script>";
 				if (substr($uname, 0, 2) == '99') {
 					echo "<script>location.href='../MainWin/mainAdmins.php?id=$uname';</script>";
 				} else {
 					echo "<script>location.href='../MainWin/main.php?id=$uname';</script>";
 				}
 			} else {
-				echo "<script>alert('å¯†ç é”™è¯¯ï¼')</script>";
+				echo "<script>alert('ÃÜÂë´íÎó£¡')</script>";
 				echo "<script>location.href='LoginAndRegister.php';</script>";
 			}
 		} else {
-			echo "<script>alert('ç”¨æˆ·åä¸å­˜åœ¨ï¼')</script>";
+			echo "<script>alert('ÓÃ»§Ãû²»´æÔÚ£¡')</script>";
 			echo "<script>location.href='LoginAndRegister.php';</script>";
 		}
 	?>

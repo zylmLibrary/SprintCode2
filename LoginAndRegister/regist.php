@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="gbk">
 	<title></title>
 </head>
 <body>
@@ -12,17 +12,17 @@
 		$pwd2 = $_POST["pwd2"];
 
 		if($pwd != $pwd2){
-			echo "<script>alert('ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸åŒ,è¯·é‡æ–°è¾“å…¥ï¼')</script>";
+			echo "<script>alert('Á½´ÎÊäÈëµÄÃÜÂë²»Í¬,ÇëÖØĞÂÊäÈë£¡')</script>";
 			echo "<script>location.href='LoginAndRegister.php';</script>";
 		}else{
 			$result = mysqli_query($conn, "SELECT RdId FROM Reader WHERE RdId = $uname");
 			if ( @mysqli_num_rows($result) != 0 ) {
-				echo "<script>alert('ç”¨æˆ·å·²å­˜åœ¨ï¼')</script>";
+				echo "<script>alert('ÓÃ»§ÒÑ´æÔÚ£¡')</script>";
 				echo "<script>location.href='LoginAndRegister.php';</script>";
 			}else{
-				$sql = "INSERT INTO Reader VALUES($uname,'default','ç”·',$pwd)";
+				$sql = "INSERT INTO Reader VALUES($uname,'default','ÄĞ',$pwd)";
 				mysqli_query($conn, $sql);
-				echo "<script>alert('æ³¨å†ŒæˆåŠŸï¼')</script>";
+				echo "<script>alert('×¢²á³É¹¦£¡')</script>";
 				echo "<script>location.href='LoginAndRegister.php';</script>";
 			}
 		}
