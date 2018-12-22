@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>å›¾ä¹¦ä¿¡æ¯åˆ—è¡¨</title>
+	<meta charset="gbk">
+	<title>Í¼ÊéÐÅÏ¢ÁÐ±í</title>
 	<link rel="stylesheet" type="text/css" href="./assets/main.css"/ >
 </head>
 <body>
@@ -11,76 +11,77 @@
 
 		if (!empty($_GET['keyId'])) {
 			$keyId = $_GET['keyId'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkId LIKE '%$keyId%'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE Id LIKE '%$keyId%' group by id");
 		} else if (!empty($_GET['keyName'])) {
 			$keyName = $_GET['keyName'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkName LIKE '%$keyName%'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE BkName LIKE '%$keyName%' group by id");
 		} else if (!empty($_GET['keyAuthor'])) {
 			$keyAuthor = $_GET['keyAuthor'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkAuthor LIKE '%$keyAuthor%'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE BkAuthor LIKE '%$keyAuthor%' group by id");
 		} else if (!empty($_GET['keyClassify'])) {
 			$keyClassify = $_GET['keyClassify'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkClassify='$keyClassify'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE BkClassify='$keyClassify' group by id");
 		} else if ( !empty($_GET['keyId']) && !empty($_GET['keyName']) ) {
 			$keyId = $_GET['keyId'];
 			$keyName = $_GET['keyName'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkId LIKE '%$keyId%' and BkName LIKE '%$keyName%'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE Id LIKE '%$keyId%' and BkName LIKE '%$keyName%' group by id");
 		} else if ( !empty($_GET['keyId']) && !empty($_GET['keyAuthor']) ) {
 			$keyId = $_GET['keyId'];
 			$keyAuthor = $_GET['keyAuthor'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkId LIKE '%$keyId%' and BkAuthor LIKE '%$keyAuthor%'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE Id LIKE '%$keyId%' and BkAuthor LIKE '%$keyAuthor%' group by id");
 		} else if ( !empty($_GET['keyId']) && !empty($_GET['keyClassify']) ) {
 			$keyId = $_GET['keyId'];
 			$keyClassify = $_GET['keyClassify'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkId LIKE '%$keyId%' and BkClassify='$keyClassify'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE Id LIKE '%$keyId%' and BkClassify='$keyClassify' group by id");
 		} else if ( !empty($_GET['keyName']) && !empty($_GET['keyAuthor']) ) {
 			$keyName = $_GET['keyName'];
 			$keyAuthor = $_GET['keyAuthor'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkName LIKE '%$keyName%' and BkAuthor LIKE '%$keyAuthor%'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE BkName LIKE '%$keyName%' and BkAuthor LIKE '%$keyAuthor%' group by id");
 		} else if ( !empty($_GET['keyName']) && !empty($_GET['keyClassify']) ) {
 			$keyName = $_GET['keyName'];
 			$keyClassify = $_GET['keyClassify'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkName LIKE '%$keyName%' and BkClassify='$keyClassify'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE BkName LIKE '%$keyName%' and BkClassify='$keyClassify' group by id");
 		} else if ( !empty($_GET['keyAuthor']) && !empty($_GET['keyClassify']) ) {
 			$keyAuthor = $_GET['keyAuthor'];
 			$keyClassify = $_GET['keyClassify'];
-			$result = mysqli_query($conn, "SELECT * From Book WHERE BkAuthor LIKE '%$keyAuthor%' and BkClassify='$keyClassify'");
+			$result = mysqli_query($conn, "SELECT * From Book WHERE BkAuthor LIKE '%$keyAuthor%' and BkClassify='$keyClassify' group by id");
 		} else {
-			$result = mysqli_query($conn, "SELECT * From Book");
+			$result = mysqli_query($conn, "SELECT * From Book group by id");
 		}
 
 	?>
 	<form action="./mainAdmins.php" method="get">
 		<div class="box">
-		<div class="title">å›¾ä¹¦ä¿¡æ¯åˆ—è¡¨</div>
+		<div class="title">Í¼ÊéÐÅÏ¢ÁÐ±í</div>
 		<div class="search">
-			<span>ä¹¦å·ï¼š</span><input type="text" name="keyId"/>
-			<span>ä¹¦åï¼š</span><input type="text" name="keyName"/>
-			<span>ä½œè€…ï¼š</span><input type="text" name="keyAuthor"/>
-			<span>ç±»åˆ«ï¼š</span>
+			<span>ÊéºÅ£º</span><input type="text" name="keyId"/>
+			<span>ÊéÃû£º</span><input type="text" name="keyName"/>
+			<span>×÷Õß£º</span><input type="text" name="keyAuthor"/>
+			<span>Àà±ð£º</span>
 				<select name="keyClassify">
 					<option value="" selected> </option>
-					<option value="å“²å­¦ã€å®—æ•™">å“²å­¦ã€å®—æ•™</option>
-					<option value="ç¤¾ä¼šç§‘å­¦æ€»è®º">ç¤¾ä¼šç§‘å­¦æ€»è®º</option>
-					<option value="æ”¿æ²»ã€æ³•å¾‹">æ”¿æ²»ã€æ³•å¾‹</option>
-					<option value="å†›äº‹">å†›äº‹</option>
-					<option value="ç»æµŽ">ç»æµŽ</option>
-					<option value="æ–‡åŒ–ã€ç§‘å­¦">æ–‡åŒ–ã€ç§‘å­¦</option>
-					<option value="è¯­è¨€ã€æ–‡å­—">è¯­è¨€ã€æ–‡å­—</option>
-					<option value="æ–‡å­¦">æ–‡å­¦</option>
-					<option value="è‰ºæœ¯">è‰ºæœ¯</option>
-					<option value="åŽ†å²ã€åœ°ç†">åŽ†å²ã€åœ°ç†</option>
-					<option value="è‡ªç„¶ç§‘å­¦æ€»è®º">è‡ªç„¶ç§‘å­¦æ€»è®º</option>
-					<option value="æ•°ç†ç§‘å­¦å’ŒåŒ–å­¦">æ•°ç†ç§‘å­¦å’ŒåŒ–å­¦</option>
-					<option value="å¤©æ–‡å­¦ã€åœ°çƒç§‘å­¦">å¤©æ–‡å­¦ã€åœ°çƒç§‘å­¦</option>
-					<option value="ç”Ÿç‰©ç§‘å­¦">ç”Ÿç‰©ç§‘å­¦</option>
-					<option value="åŒ»è¯ã€å«ç”Ÿ">åŒ»è¯ã€å«ç”Ÿ</option>
-					<option value="å†œä¸šç§‘å­¦">å†œä¸šç§‘å­¦</option>
-					<option value="å·¥ä¸šæŠ€æœ¯">å·¥ä¸šæŠ€æœ¯</option>
-					<option value="äº¤é€šè¿è¾“">äº¤é€šè¿è¾“</option>
-					<option value="èˆªç©ºã€èˆªå¤©">èˆªç©ºã€èˆªå¤©</option>
-					<option value="çŽ¯å¢ƒç§‘å­¦ã€åŠ³åŠ¨ä¿æŠ¤ç§‘å­¦ï¼ˆå®‰å…¨ç§‘å­¦ï¼‰">çŽ¯å¢ƒç§‘å­¦ã€åŠ³åŠ¨ä¿æŠ¤ç§‘å­¦ï¼ˆå®‰å…¨ç§‘å­¦ï¼‰</option>
-					<option value="ç»¼åˆæ€§å›¾ä¹¦">ç»¼åˆæ€§å›¾ä¹¦</option>
+					<option value="ÕÜÑ§¡¢×Ú½Ì">ÕÜÑ§¡¢×Ú½Ì</option>
+					<option value="Éç»á¿ÆÑ§×ÜÂÛ">Éç»á¿ÆÑ§×ÜÂÛ</option>
+					<option value="ÕþÖÎ¡¢·¨ÂÉ">ÕþÖÎ¡¢·¨ÂÉ</option>
+					<option value="¾üÊÂ">¾üÊÂ</option>
+					<option value="¾­¼Ã">¾­¼Ã</option>
+					<option value="ÎÄ»¯¡¢¿ÆÑ§">ÎÄ»¯¡¢¿ÆÑ§</option>
+					<option value="ÓïÑÔ¡¢ÎÄ×Ö">ÓïÑÔ¡¢ÎÄ×Ö</option>
+					<option value="ÎÄÑ§">ÎÄÑ§</option>
+					<option value="ÒÕÊõ">ÒÕÊõ</option>
+					<option value="ÀúÊ·¡¢µØÀí">ÀúÊ·¡¢µØÀí</option>
+					<option value="×ÔÈ»¿ÆÑ§×ÜÂÛ">×ÔÈ»¿ÆÑ§×ÜÂÛ</option>
+					<option value="ÊýÀí¿ÆÑ§ºÍ»¯Ñ§">ÊýÀí¿ÆÑ§ºÍ»¯Ñ§</option>
+					<option value="ÌìÎÄÑ§¡¢µØÇò¿ÆÑ§">ÌìÎÄÑ§¡¢µØÇò¿ÆÑ§</option>
+					<option value="ÉúÎï¿ÆÑ§">ÉúÎï¿ÆÑ§</option>
+					<option value="Ò½Ò©¡¢ÎÀÉú">Ò½Ò©¡¢ÎÀÉú</option>
+					<option value="Å©Òµ¿ÆÑ§">Å©Òµ¿ÆÑ§</option>
+					<option value="¹¤Òµ¼¼Êõ">¹¤Òµ¼¼Êõ</option>
+					<option value="½»Í¨ÔËÊä">½»Í¨ÔËÊä</option>
+					<option value="º½¿Õ¡¢º½Ìì">º½¿Õ¡¢º½Ìì</option>
+					<option value="»·¾³¿ÆÑ§¡¢ÀÍ¶¯±£»¤¿ÆÑ§£¨°²È«¿ÆÑ§£©">»·¾³¿ÆÑ§¡¢ÀÍ¶¯±£»¤¿ÆÑ§£¨°²È«¿ÆÑ§£©</option>
+					<option value="×ÛºÏÐÔÍ¼Êé">×ÛºÏÐÔÍ¼Êé</option>
+                    <option value="¹¤Ñ§">¹¤Ñ§</option>
 				</select>&nbsp; &nbsp;
 				<?php 
 					if(!empty($_GET['id']))
@@ -93,48 +94,49 @@
 
 				?>
 				
-			<input type="submit" value="æŸ¥è¯¢"/>
+			<input type="submit" value="²éÑ¯"/>
 		</div>
 		<table border="1">
 			<tr>
-				<th>ä¹¦å·</th>
-				<th>ä¹¦å</th>
-				<th>ä½œè€…</th>
-                <th>å•ä»·</th>
-				<th>ç±»åˆ«</th>
-				<th>ä½ç½®</th>
-				<th>å‰©ä½™é‡</th>
-				<th>å‡ºç‰ˆç¤¾</th>
-				<th>ç›¸å…³æ“ä½œ</th>
+				<th>ÊéºÅ</th>
+				<th>ÊéÃû</th>
+				<th>×÷Õß</th>
+                <th>µ¥¼Û</th>
+				<th>Àà±ð</th>
+				<th>Î»ÖÃ</th>
+				<th>Ê£ÓàÁ¿</th>
+				<th>³ö°æÉç</th>
 			</tr>
-	<?php
+<?php
 		if( mysqli_num_rows($result) > 0 ){
 			while($myrow = mysqli_fetch_assoc($result)){
 	?>
 				<tr>
-					<td><span><?php echo $myrow['BkId']; ?></span></td>
+					<td><span><?php $bkid=$myrow['id'];
+					echo $myrow['id']; ?></span></td>
 					<td><span><?php echo $myrow['BkName']; ?></span></td>
 					<td><span><?php echo $myrow['BkAuthor']; ?></span></td>
 					<td><span><?php echo $myrow['BkPrice']; ?></span></td>
 					<td><span><?php echo $myrow['BkClassify']; ?></span></td>
 					<td><span><?php echo $myrow['BkLocation']; ?></span></td>
-					<td><span><?php echo $myrow['BkRessidue']; ?></span></td>
+					<td><span><?php 
+					$result0 = mysqli_query($conn, "select count(*) from book where id='$bkid'");
+					$myrow0 = mysqli_fetch_assoc($result0);
+					echo $myrow0['count(*)'];
+					?></span></td>
 					<td><span><?php echo $myrow['BkPress']; ?></span></td>
-					<td><div align="center"><span>
-						<img src="images/edt.gif" width="16" height="16" />
-						<a href="./borrow.php?RdId=<?php $RdId="211600000"; echo $RdId; ?>&amp;BkId=<?php echo $myrow['BkId']; ?>&amp;AdId=<?php $AdId="211602345"; echo $AdId; ?>&amp;Flag=<?php echo "No"; ?>">å€Ÿé˜…</a>
-					</span></div></td>
+
 				</tr>
 	<?php
 			}
 		} else {
 	?> 
-			<tr><td colspan="8">æŸ¥è¯¢çš„ç»“æžœä¸å­˜åœ¨ï¼</td></tr>
+			<tr><td colspan="8">²éÑ¯µÄ½á¹û²»´æÔÚ£¡</td></tr>
 	<?php 
 		}
 	?>
 		</table>
 	</form>
-	<div class="r"><a href="../AdminPersonalCenter/AdminPersonalCenter.php?id=<?php echo $id ?>">ä¸ªäººä¸­å¿ƒ</a></div>
+	<div class="r"><a href="../AdminPersonalCenter/AdminPersonalCenter.php?id=<?php echo $id ?>">¸öÈËÖÐÐÄ</a></div>
 </body>
 </html>
