@@ -10,7 +10,7 @@
 /jquery-1.4.min.js"></script>
 	</head>  
 <?php 
-include "conn.php";
+include_once("../ConnectToDatabase/conn.php");
 $RdId=$_GET['RdId'];
 header('Content-Type:text/html; charset=gbk');
 $result=mysqli_query($conn,"select * from Reader where RdId=$RdId;");
@@ -21,7 +21,7 @@ $Reader=mysqli_fetch_array($result);
 			<div class="bar">
 				<div class="w1200">
 					<span class="l">用户<font>个人中心</font></span>
-					<span class="r"><a href="#"><i class="icon iconfont icon-dianyuan"></i>退出</a></span>
+					<span class="r"><a href="../MainWin/main.php?id=<?php echo $RdId;?>">返回</a>&nbsp;&nbsp;&nbsp;<a href="../LoginAndRegister/LoginAndRegister.php">退出</a></span>
 				</div>
 			</div>
 			<div class="user-info">
@@ -109,14 +109,16 @@ $Reader=mysqli_fetch_array($result);
 					 }
 	 }
 }
-					$result0=mysqli_query($conn,"select * from Lend where RdId=$RdId and Flag='No';");
+					$result0=mysqli_query($conn,"select * from Lend where RdId=$RdId and Flag='No';");?>
+					
+					<?php
 					 while($renew=mysqli_fetch_array($result0)){?>
 						<tr> 
-						<td align="center"><span><?php echo $renew['BkId']; ?></span></td>
+						<td align="center"><span><?php echo $renew['id']; ?></span></td>
                         <td align="center"><span><?php 
-						$result1=mysqli_query($conn,"select * from Book where BkId=$renew[1];");
+						$result1=mysqli_query($conn,"select * from BookCollection where id=$renew[1];");
 						$Book=mysqli_fetch_array($result1);
-						echo $Book[1];
+						echo $Book['BkName'];
 						 ?></span></td> 
                         <td align="center"><span><?php echo $renew['BT']; ?></span></td> 
                         <td align="center"><span><?php echo $renew['RT']; ?></span></td> 

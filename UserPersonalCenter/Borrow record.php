@@ -10,7 +10,7 @@
 /jquery-1.4.min.js"></script>
 	</head>  
 <?php 
-include "conn.php";
+include_once("../ConnectToDatabase/conn.php");
 $RdId=$_GET['RdId'];
 header('Content-Type:text/html; charset=gbk');
 $result=mysqli_query($conn,"select * from Reader where RdId=$RdId;");
@@ -21,7 +21,7 @@ $Reader=mysqli_fetch_array($result);
 			<div class="bar">
 				<div class="w1200">
 					<span class="l">用户<font>个人中心</font></span>
-					<span class="r"><a href="#"><i class="icon iconfont icon-dianyuan"></i>退出</a></span>
+					<span class="r"><a href="../MainWin/main.php?id=<?php echo $RdId;?>">返回</a>&nbsp;&nbsp;&nbsp;<a href="../LoginAndRegister/LoginAndRegister.php">退出</a></span>
 				</div>
 			</div>
 			<div class="user-info">
@@ -104,12 +104,12 @@ $Reader=mysqli_fetch_array($result);
 						<td align="center"><span><?php echo $Lend[0]; ?></span></td> 
                         <td align="center"><span><?php echo $Reader[1]; ?></span></td>
                         <td align="center"><span><?php 
-						$result0=mysqli_query($conn,"select * from Book where BkId=$Lend[1];");
+						$result0=mysqli_query($conn,"select * from BookCollection where id=$Lend[1];");
 						$Book=mysqli_fetch_array($result0);
-						echo $Book[1];
+						echo $Book['BkName'];
 						 ?></span></td> 
-						<td align="center"><span><?php echo $Lend[2]; ?></span></td> 
-                        <td align="center"><span><?php if($Lend[5]=='Yes')echo "是";else echo "否"; ?></span></td> 
+						<td align="center"><span><?php echo $Lend['BT']; ?></span></td> 
+                        <td align="center"><span><?php if($Lend['Flag']=='Yes')echo "是";else echo "否"; ?></span></td> 
 						</tr>
 						
 						

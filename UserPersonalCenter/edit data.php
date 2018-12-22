@@ -10,7 +10,8 @@
 /jquery-1.4.min.js"></script>
 	</head>  
 <?php 
-include "conn.php";
+include_once("../ConnectToDatabase/conn.php");
+if(isset($_GET['RdId']))
 $RdId=$_GET['RdId'];
 header('Content-Type:text/html; charset=gbk');
 $result=mysqli_query($conn,"select * from Reader where RdId=$RdId;");
@@ -21,7 +22,7 @@ $Reader=mysqli_fetch_array($result);
 			<div class="bar">
 				<div class="w1200">
 					<span class="l">用户<font>个人中心</font></span>
-					<span class="r"><a href="#"><i class="icon iconfont icon-dianyuan"></i>退出</a></span>
+					<span class="r"><a href="../MainWin/main.php?id=<?php echo $RdId;?>">返回</a>&nbsp;&nbsp;&nbsp;<a href="../LoginAndRegister/LoginAndRegister.php">退出</a></span>
 				</div>
 			</div>
 			<div class="user-info">
@@ -83,26 +84,22 @@ $Reader=mysqli_fetch_array($result);
 	$username=$_POST["username"];
 	$password1=$_POST["password1"];
 	$password2=$_POST["password2"];
-	if($_POST["sex"]==1) $sex='男';else $sex='女';
+	$sex=$_POST["sex"];
 	if($password1!=$Reader[3]){
 	?><script>alert("密码不正确");</script><?php }
 	else{
-	$result=mysqli_query($connID,"update Reader set RdName='$username',RdSex='$sex',RdPW='$password2' where RdId=$RdId;");}
-	?><script>location.href='edit data.php';</script><?php
+	$result=mysqli_query($conn,"update Reader set RdName='$username',RdSex='$sex',RdPW='$password2' where RdId=$RdId;");}
+	?><script>location.href="edit data.php?RdId=<?php echo $RdId;?>"</script><?php
 
 	}
 
 					?>
-                    <form action="edit data.php" method="post">
+                    <form action="edit data.php?RdId=<?php echo $RdId;?>" method="post">
 	<br>
 	用户ID：<?php echo $Reader[0];?><br><br>
     姓名：<input type="text" name="username" value="<?php echo $Reader[1];?>" size="10"/><br><br>
-    性别：<input name="sex" type="radio" value="<?php 
-	if($Reader[2]=='男')echo "1";else echo "0";
-	?>" checked="checked" />男
-    <input name="sex" type="radio" value="<?php 
-	if($Reader[2]=='男')echo "0";else echo "1";
-	?>" />女<br /><br>
+    性别：<input type="text" name="sex" value="<?php echo $Reader[2];?>" size="10"/>
+    <br /><br>
     初始密码：<input type="password" name="password1" value="" size="10" maxlength="20"/><br><br>
     新密码：<input type="password" name="password2" value="" size="10" maxlength="20"/><br><br>
 	<input type="submit" value="提交" name="submit"/>

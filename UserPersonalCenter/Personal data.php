@@ -10,7 +10,7 @@
 /jquery-1.4.min.js"></script>
 	</head>  
 <?php 
-include "conn.php";
+include_once("../ConnectToDatabase/conn.php");
 //$RdId=211600010;
 $RdId=$_GET['RdId'];
 header('Content-Type:text/html; charset=gbk');
@@ -22,7 +22,7 @@ $Reader=mysqli_fetch_array($result);
 			<div class="bar">
 				<div class="w1200">
 					<span class="l">用户<font>个人中心</font></span>
-					<span class="r"><a href="#"><i class="icon iconfont icon-dianyuan"></i>退出</a></span>
+					<span class="r"><a href="../MainWin/main.php?id=<?php echo $RdId;?>">返回</a>&nbsp;&nbsp;&nbsp;<a href="../LoginAndRegister/LoginAndRegister.php">退出</a></span>
 				</div>
 			</div>
 			<div class="user-info">
@@ -38,7 +38,7 @@ $Reader=mysqli_fetch_array($result);
 						</p>
 					</div>
 					<div class="user-modify">
-						<a href="edit data.php">修改资料></a>
+						<a href="edit data.php?RdId=<?php echo $RdId; ?>">修改资料></a>
 					</div>
 				</div>
 			</div>
