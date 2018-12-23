@@ -118,13 +118,13 @@
 		mysqli_query($conn, $sql);
 		echo "完成创建<br>";
 						 						
-		$sql = "INSERT INTO Admins VALUES('211604896','李武','男','abcd1234')";
+		$sql = "INSERT INTO Admins VALUES('991604896','李武','男','abcd1234')";
 		mysqli_query($conn, $sql);
 
-		$sql = "INSERT INTO Admins VALUES('211606301','赵武','男','123456')";
+		$sql = "INSERT INTO Admins VALUES('991606301','赵武','男','123456')";
 		mysqli_query($conn,$sql);
 
-		$sql = "INSERT INTO Admins VALUES('211602345','李雪','女','abcdefg')";
+		$sql = "INSERT INTO Admins VALUES('991602345','李雪','女','abcdefg')";
 		mysqli_query($conn,$sql);
 
 		// $result = mysqli_query($conn, "SELECT * FROM Admins");
